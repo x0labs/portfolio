@@ -82,7 +82,7 @@
       <nav class="container mx-auto flex justify-between items-center py-4 px-6">
         <h1 class="text-2xl font-bold">Andrew Parker</h1>
         <ul class="hidden md:flex space-x-6 text-sm">
-          <li><a href="#home" class="hover:text-teal-400 transition">Home</a></li>
+          <li><a href="#about" class="hover:text-teal-400 transition">About</a></li>
           <li><a href="#skills" class="hover:text-teal-400 transition">Skills</a></li>
           <li><a href="#homelab" class="hover:text-teal-400 transition">Homelab</a></li>
           <li><a href="#projects" class="hover:text-teal-400 transition">Projects</a></li>
@@ -94,96 +94,11 @@
             <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
-      </div>
-    </section>
-    
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 py-8 px-6 border-t border-gray-800">
-      <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div class="text-center md:text-left mb-6 md:mb-0">
-          <h3 class="text-xl font-bold mb-2">Andrew Parker</h3>
-          <p class="text-gray-400">IT Specialist & Security Professional</p>
-        </div>
-        
-        <div class="flex space-x-6">
-          <a href="https://github.com/x0labs" class="text-gray-400 hover:text-teal-400 transition">
-            <i class="fab fa-github text-2xl"></i>
-          </a>
-          <a href="https://linkedin.com/in/andrew-parker-it" class="text-gray-400 hover:text-teal-400 transition">
-            <i class="fab fa-linkedin text-2xl"></i>
-          </a>
-          <a href="mailto:acp6454@gmail.com" class="text-gray-400 hover:text-teal-400 transition">
-            <i class="fas fa-envelope text-2xl"></i>
-          </a>
-        </div>
-      </div>
-      
-      <div class="text-center mt-8 text-sm text-gray-500">
-        <p>&copy; 2025 Andrew Parker. All rights reserved.</p>
-      </div>
-    </footer>
-    
-    <!-- Mobile menu toggle script -->
-    <script>
-      document.getElementById('menu-toggle').addEventListener('click', function() {
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenu.classList.toggle('hidden');
-      });
-      
-      // Close mobile menu when clicking a link
-      document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', function() {
-          document.getElementById('mobile-menu').classList.add('hidden');
-        });
-      });
-    </script>
-  </body>
-</html>
-        
-        <!-- Education & Certifications -->
-        <div class="max-w-3xl mx-auto mt-16">
-          <h4 class="text-2xl font-semibold mb-8 text-center">Education & Certifications</h4>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-              <h5 class="text-xl font-semibold mb-3 flex items-center">
-                <i class="fas fa-graduation-cap mr-3 text-teal-400"></i>
-                Education
-              </h5>
-              <ul class="space-y-4 text-gray-300">
-                <li>
-                  <p class="font-medium">Bachelor of Science in Biology</p>
-                  <p class="text-sm text-gray-400">University of Utah, December 2023</p>
-                </li>
-                <li>
-                  <p class="font-medium">Business Administration Minor</p>
-                  <p class="text-sm text-gray-400">David Eccles School of Business, University of Utah, December 2023</p>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-              <h5 class="text-xl font-semibold mb-3 flex items-center">
-                <i class="fas fa-certificate mr-3 text-teal-400"></i>
-                Certifications
-              </h5>
-              <ul class="space-y-4 text-gray-300">
-                <li>
-                  <p class="font-medium">CompTIA Security+ ce</p>
-                  <p class="text-sm text-gray-400">February 2024</p>
-                </li>
-                <li>
-                  <p class="font-medium">Currently studying for Cisco CCNA</p>
-                  <p class="text-sm text-gray-400">Expected 2025</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </nav>
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-6 py-4">
         <ul class="space-y-4">
-          <li><a href="#home" class="block hover:text-teal-400">Home</a></li>
+          <li><a href="#about" class="block hover:text-teal-400">About</a></li>
           <li><a href="#skills" class="block hover:text-teal-400">Skills</a></li>
           <li><a href="#homelab" class="block hover:text-teal-400">Homelab</a></li>
           <li><a href="#projects" class="block hover:text-teal-400">Projects</a></li>
@@ -193,7 +108,7 @@
     </header>
 
     <!-- HERO -->
-    <section class="h-screen flex flex-col justify-center items-center text-center px-4" id="home">
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4" id="about">
       <div class="space-y-6 w-full max-w-2xl mx-auto">
         <h2 class="text-4xl md:text-6xl font-extrabold mb-4">
           <span class="inline-block animate-pulse">Hey, I'm Andrew Parker</span>
@@ -209,6 +124,153 @@
           <a href="https://linkedin.com/in/andrew-parker-it" class="centered-button secondary-button">
             <i class="fab fa-linkedin mr-2"></i>LinkedIn
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-20 px-6 bg-gray-800">
+      <div class="max-w-5xl mx-auto">
+        <h3 class="text-3xl font-bold mb-10 text-center">Technical Skills</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Core IT Skills -->
+          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+            <h4 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-server mr-3 text-teal-400"></i>
+              Enterprise IT
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Active Directory</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Group Policy</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Windows Server</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Linux</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Patch Management</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">O365 Administration</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Vulnerability Management</span>
+            </div>
+          </div>
+          
+          <!-- Networking Skills -->
+          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+            <h4 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-network-wired mr-3 text-teal-400"></i>
+              Networking
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DHCP</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DNS</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">VLANs</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cisco Switching</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Structured Cabling</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cloudflare Zero Trust</span>
+            </div>
+          </div>
+          
+          <!-- Security Skills -->
+          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+            <h4 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-shield-alt mr-3 text-teal-400"></i>
+              Security
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">SIEM</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">EDR</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">IPS/IDS</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">System Hardening</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Incident Response</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Security+</span>
+            </div>
+          </div>
+          
+          <!-- Development Skills -->
+          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+            <h4 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-code mr-3 text-teal-400"></i>
+              Development
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">PowerShell</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Bash</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Python</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">HTML/CSS</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMELAB -->
+    <section id="homelab" class="py-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl font-bold mb-4 text-center">My Homelab</h3>
+        <p class="text-gray-300 text-center max-w-3xl mx-auto mb-12">
+          Where theory meets practice: My personal IT playground for learning, testing, and mastering enterprise technologies
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <!-- Homelab Overview -->
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+            <h4 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-server mr-3 text-teal-400"></i>
+              Infrastructure Overview
+            </h4>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Proxmox hypervisor running on dedicated server hardware built for virtualization</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Multiple virtualized environments (Windows Server, Linux) for testing and learning</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Docker environment for containerized applications and services</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Managed network with VLANs for segregation and security</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Redundant backups using automated scripts and offsite storage</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Security Setup -->
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+            <h4 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-shield-alt mr-3 text-teal-400"></i>
+              Security & Monitoring
+            </h4>
+            <ul class="space-y-3 text-gray-300">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Self-hosted SIEM with custom dashboards for log analysis and security monitoring</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Network IDS/IPS for traffic inspection and threat detection</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Cloudflare Zero Trust implementation for secure remote access</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Custom security hardening scripts for all deployed systems</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
+                <span>Automated vulnerability scanning and patch management</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
         <!-- Featured Homelab Projects -->
         <div class="mt-10">
           <h4 class="text-2xl font-semibold mb-6 text-center">Featured Homelab Projects</h4>
@@ -223,125 +285,6 @@
                   <span class="bg-gray-700 px-2 py-1 rounded text-xs">ELK Stack</span>
                   <span class="bg-gray-700 px-2 py-1 rounded text-xs">Wazuh</span>
                 </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESUME -->
-    <section id="resume" class="py-20 px-6">
-      <div class="text-center max-w-4xl mx-auto">
-        <h3 class="text-3xl font-bold mb-6">Resume</h3>
-        <p class="text-gray-300 mb-6">Download my resume or view my professional experience below.</p>
-        
-        <!-- Fixed resume download link using correct GitHub URL -->
-        <a href="https://raw.githubusercontent.com/x0labs/portfolio/main/resume.pdf" download="Andrew_Parker_Resume.pdf" class="inline-block px-6 py-3 border border-teal-400 text-teal-400 rounded-lg font-medium hover:bg-teal-400 hover:text-gray-900 transition mb-12">
-          Download Resume
-        </a>
-        
-        <!-- Experience Timeline -->
-        <div class="max-w-3xl mx-auto mt-12">
-          <div class="relative border-l-2 border-gray-700 pl-8 py-4 ml-6">
-            <!-- Experience Item 1 -->
-            <div class="mb-10 relative">
-              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
-                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
-              </div>
-              <div class="text-left">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                  <h4 class="text-lg font-semibold">Tier 3 IT Support Specialist</h4>
-                  <p class="text-teal-400 text-sm">Sept 2024 - Present</p>
-                </div>
-                <h5 class="text-gray-300 mb-3">Deer Valley Resort, Park City</h5>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
-                  <li>Tier 3 IT support for enterprise environment at a large ski resort</li>
-                  <li>Vulnerability remediation, patch management, and device hardening</li>
-                  <li>Server and network maintenance including DHCP, DNS, Cisco switch config</li>
-                  <li>Advanced troubleshooting and incident triage</li>
-                  <li>GPO management, domain access policy enforcement</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Experience Item 2 -->
-            <div class="mb-10 relative">
-              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
-                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
-              </div>
-              <div class="text-left">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                  <h4 class="text-lg font-semibold">Help Desk / Triage</h4>
-                  <p class="text-teal-400 text-sm">Mar 2024 - Sept 2024</p>
-                </div>
-                <h5 class="text-gray-300 mb-3">Unisys, Salt Lake City</h5>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
-                  <li>Tier 2 help desk for Unisys and AAA account</li>
-                  <li>Troubleshooting software, network, hardware</li>
-                  <li>Active directory account and device management</li>
-                  <li>Windows and O365 support</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Experience Item 3 -->
-            <div class="relative">
-              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
-                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
-              </div>
-              <div class="text-left">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                  <h4 class="text-lg font-semibold">Owner</h4>
-                  <p class="text-teal-400 text-sm">Jan 2022 - Present</p>
-                </div>
-                <h5 class="text-gray-300 mb-3">TechnoJargon LLC, Salt Lake City</h5>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
-                  <li>IT consultant for small business in Salt Lake area</li>
-                  <li>Technical Support for multiple small businesses</li>
-                  <li>Web development - HTML CSS</li>
-                  <li>Application Support - Office 365, Google Workspace</li>
-                  <li>Networking - DHCP, DNS, structured cabling</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-          
-          <!-- Project 5 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Custom SIEM Dashboard</h4>
-              <p class="text-gray-300 mb-4">Developed specialized dashboards for security monitoring using open-source tools to visualize network and system events.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">ELK Stack</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Wazuh</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Dashboards</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-          
-          <!-- Project 6 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Docker Container Environment</h4>
-              <p class="text-gray-300 mb-4">Established a comprehensive Docker environment with monitoring, automated deployments, and proper networking.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Docker</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Docker Compose</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Portainer</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
               </div>
             </div>
             
@@ -455,147 +398,207 @@
               </a>
             </div>
           </div>
-
-    <!-- SKILLS -->
-    <section id="skills" class="py-20 px-6 bg-gray-800">
-      <div class="max-w-5xl mx-auto">
-        <h3 class="text-3xl font-bold mb-10 text-center">Technical Skills</h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Core IT Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-server mr-3 text-teal-400"></i>
-              Enterprise IT
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">PowerShell</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Bash</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Python</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">HTML/CSS</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Docker</span>
+          
+          <!-- Project 5 -->
+          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
+            <div class="project-content">
+              <h4 class="text-xl font-semibold mb-3">Custom SIEM Dashboard</h4>
+              <p class="text-gray-300 mb-4">Developed specialized dashboards for security monitoring using open-source tools to visualize network and system events.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-gray-600 px-2 py-1 rounded text-xs">ELK Stack</span>
+                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Wazuh</span>
+                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Dashboards</span>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-end">
+              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
+                <span>Read more</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Project 6 -->
+          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
+            <div class="project-content">
+              <h4 class="text-xl font-semibold mb-3">Docker Container Environment</h4>
+              <p class="text-gray-300 mb-4">Established a comprehensive Docker environment with monitoring, automated deployments, and proper networking.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Docker</span>
+                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Docker Compose</span>
+                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Portainer</span>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-end">
+              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
+                <span>Read more</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- HOMELAB -->
-    <section id="homelab" class="py-20 px-6">
-      <div class="max-w-6xl mx-auto">
-        <h3 class="text-3xl font-bold mb-4 text-center">My Homelab</h3>
-        <p class="text-gray-300 text-center max-w-3xl mx-auto mb-12">
-          Where theory meets practice: My personal IT playground for learning, testing, and mastering enterprise technologies
-        </p>
+    <!-- RESUME -->
+    <section id="resume" class="py-20 px-6">
+      <div class="text-center max-w-4xl mx-auto">
+        <h3 class="text-3xl font-bold mb-6">Resume</h3>
+        <p class="text-gray-300 mb-6">Download my resume or view my professional experience below.</p>
         
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-          <!-- Homelab Overview -->
-          <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-server mr-3 text-teal-400"></i>
-              Infrastructure Overview
-            </h4>
-            <ul class="space-y-3 text-gray-300">
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Proxmox hypervisor running on dedicated server hardware built for virtualization</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Multiple virtualized environments (Windows Server, Linux) for testing and learning</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Docker environment for containerized applications and services</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Managed network with VLANs for segregation and security</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Redundant backups using automated scripts and offsite storage</span>
-              </li>
-            </ul>
-          </div>
-          
-          <!-- Security Setup -->
-          <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-shield-alt mr-3 text-teal-400"></i>
-              Security & Monitoring
-            </h4>
-            <ul class="space-y-3 text-gray-300">
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Self-hosted SIEM with custom dashboards for log analysis and security monitoring</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Network IDS/IPS for traffic inspection and threat detection</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Cloudflare Zero Trust implementation for secure remote access</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Custom security hardening scripts for all deployed systems</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Automated vulnerability scanning and patch management</span>
-              </li>
-            </ul>
-          </div>
-        </div>-1 rounded-lg text-sm">Active Directory</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Group Policy</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Windows Server</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Linux</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Patch Management</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">O365 Administration</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Vulnerability Management</span>
+        <!-- Fixed resume download link using correct GitHub URL -->
+        <a href="https://raw.githubusercontent.com/x0labs/portfolio/main/resume.pdf" download="Andrew_Parker_Resume.pdf" class="inline-block px-6 py-3 border border-teal-400 text-teal-400 rounded-lg font-medium hover:bg-teal-400 hover:text-gray-900 transition mb-12">
+          Download Resume
+        </a>
+        
+        <!-- Experience Timeline -->
+        <div class="max-w-3xl mx-auto mt-12">
+          <div class="relative border-l-2 border-gray-700 pl-8 py-4 ml-6">
+            <!-- Experience Item 1 -->
+            <div class="mb-10 relative">
+              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
+                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
+              </div>
+              <div class="text-left">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                  <h4 class="text-lg font-semibold">Tier 3 IT Support Specialist</h4>
+                  <p class="text-teal-400 text-sm">Sept 2024 - Present</p>
+                </div>
+                <h5 class="text-gray-300 mb-3">Deer Valley Resort, Park City</h5>
+                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
+                  <li>Tier 3 IT support for enterprise environment at a large ski resort</li>
+                  <li>Vulnerability remediation, patch management, and device hardening</li>
+                  <li>Server and network maintenance including DHCP, DNS, Cisco switch config</li>
+                  <li>Advanced troubleshooting and incident triage</li>
+                  <li>GPO management, domain access policy enforcement</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Experience Item 2 -->
+            <div class="mb-10 relative">
+              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
+                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
+              </div>
+              <div class="text-left">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                  <h4 class="text-lg font-semibold">Help Desk / Triage</h4>
+                  <p class="text-teal-400 text-sm">Mar 2024 - Sept 2024</p>
+                </div>
+                <h5 class="text-gray-300 mb-3">Unisys, Salt Lake City</h5>
+                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
+                  <li>Tier 2 help desk for Unisys and AAA account</li>
+                  <li>Troubleshooting software, network, hardware</li>
+                  <li>Active directory account and device management</li>
+                  <li>Windows and O365 support</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Experience Item 3 -->
+            <div class="relative">
+              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
+                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
+              </div>
+              <div class="text-left">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                  <h4 class="text-lg font-semibold">Owner</h4>
+                  <p class="text-teal-400 text-sm">Jan 2022 - Present</p>
+                </div>
+                <h5 class="text-gray-300 mb-3">TechnoJargon LLC, Salt Lake City</h5>
+                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
+                  <li>IT consultant for small business in Salt Lake area</li>
+                  <li>Technical Support for multiple small businesses</li>
+                  <li>Web development - HTML CSS</li>
+                  <li>Application Support - Office 365, Google Workspace</li>
+                  <li>Networking - DHCP, DNS, structured cabling</li>
+                </ul>
+              </div>
             </div>
           </div>
-          
-          <!-- Networking Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-network-wired mr-3 text-teal-400"></i>
-              Networking
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DHCP</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DNS</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">VLANs</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cisco Switching</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Structured Cabling</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cloudflare Zero Trust</span>
+        </div>
+        
+        <!-- Education & Certifications -->
+        <div class="max-w-3xl mx-auto mt-16">
+          <h4 class="text-2xl font-semibold mb-8 text-center">Education & Certifications</h4>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+              <h5 class="text-xl font-semibold mb-3 flex items-center">
+                <i class="fas fa-graduation-cap mr-3 text-teal-400"></i>
+                Education
+              </h5>
+              <ul class="space-y-4 text-gray-300">
+                <li>
+                  <p class="font-medium">Bachelor of Science in Biology</p>
+                  <p class="text-sm text-gray-400">University of Utah, December 2023</p>
+                </li>
+                <li>
+                  <p class="font-medium">Business Administration Minor</p>
+                  <p class="text-sm text-gray-400">David Eccles School of Business, University of Utah, December 2023</p>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+              <h5 class="text-xl font-semibold mb-3 flex items-center">
+                <i class="fas fa-certificate mr-3 text-teal-400"></i>
+                Certifications
+              </h5>
+              <ul class="space-y-4 text-gray-300">
+                <li>
+                  <p class="font-medium">CompTIA Security+ ce</p>
+                  <p class="text-sm text-gray-400">February 2024</p>
+                </li>
+                <li>
+                  <p class="font-medium">Currently studying for Cisco CCNA</p>
+                  <p class="text-sm text-gray-400">Expected 2025</p>
+                </li>
+              </ul>
             </div>
           </div>
-          
-          <!-- Security Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-shield-alt mr-3 text-teal-400"></i>
-              Security
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">SIEM</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">EDR</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">IPS/IDS</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">System Hardening</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Incident Response</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Security+</span>
-            </div>
-          </div>
-          
-          <!-- Development Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-code mr-3 text-teal-400"></i>
-              Development
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">PowerShell</span>
-              <span class="skill-tag bg-gray-600 px-3 py
+        </div>
+      </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 py-8 px-6 border-t border-gray-800">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="text-center md:text-left mb-6 md:mb-0">
+          <h3 class="text-xl font-bold mb-2">Andrew Parker</h3>
+          <p class="text-gray-400">IT Specialist & Security Professional</p>
+        </div>
+        
+        <div class="flex space-x-6">
+          <a href="https://github.com/x0labs" class="text-gray-400 hover:text-teal-400 transition">
+            <i class="fab fa-github text-2xl"></i>
+          </a>
+          <a href="https://linkedin.com/in/andrew-parker-it" class="text-gray-400 hover:text-teal-400 transition">
+            <i class="fab fa-linkedin text-2xl"></i>
+          </a>
+          <a href="mailto:acp6454@gmail.com" class="text-gray-400 hover:text-teal-400 transition">
+            <i class="fas fa-envelope text-2xl"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="text-center mt-8 text-sm text-gray-500">
+        <p>&copy; 2025 Andrew Parker. All rights reserved.</p>
+      </div>
+    </footer>
+    
+    <!-- Mobile menu toggle script -->
+    <script>
+      document.getElementById('menu-toggle').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+          document.getElementById('mobile-menu').classList.add('hidden');
+        });
+      });
+    </script>
+  </body>
+</html>
