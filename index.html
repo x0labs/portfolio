@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andrew Parker | IT Specialist & Security Professional</title>
+    <title>Andrew Parker | Systems Administrator & Security Professional</title>
     
     <!-- Favicon implementation with multiple options following W3C standards -->
     <link rel="icon" type="image/x-icon" href="favicon.ico?v=1">
@@ -74,9 +74,22 @@
         background-color: #14b8a6;
         color: #111827;
       }
+      
+      /* Particle Network Background */
+      #particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(to bottom, #0a0a0a, #1a1a2e);
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white font-sans">
+    <!-- Particle Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
     <!-- NAVBAR -->
     <header class="fixed w-full z-50 bg-gray-900 bg-opacity-95 shadow">
       <nav class="container mx-auto flex justify-between items-center py-4 px-6">
@@ -114,7 +127,7 @@
           <span class="inline-block animate-pulse">Hey, I'm Andrew Parker</span>
         </h2>
         <p class="text-lg md:text-xl text-gray-300">
-          IT Specialist | Cybersecurity Professional | Builder of things in code, cables, and cloud
+          Systems Administrator | Cybersecurity Professional | Builder of things in code, cables, and cloud
         </p>
         
         <!-- Fixed button container with proper styling -->
@@ -146,8 +159,8 @@
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Windows Server</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Linux</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Patch Management</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">O365 Administration</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Vulnerability Management</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Google Workspace</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Salesforce Administration</span>
             </div>
           </div>
           
@@ -158,11 +171,12 @@
               Networking
             </h4>
             <div class="flex flex-wrap gap-2">
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">pfSense</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DHCP</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DNS</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">VLANs</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cisco Switching</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Structured Cabling</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Aruba Wireless</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cloudflare Zero Trust</span>
             </div>
           </div>
@@ -174,11 +188,11 @@
               Security
             </h4>
             <div class="flex flex-wrap gap-2">
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">CrowdStrike EDR</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">CheckPoint Email Security</span>
+              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">1Password Enterprise</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">SIEM</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">EDR</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">IPS/IDS</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">System Hardening</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Incident Response</span>
               <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Security+</span>
             </div>
           </div>
@@ -461,8 +475,29 @@
               </div>
               <div class="text-left">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                  <h4 class="text-lg font-semibold">Systems Administrator</h4>
+                  <p class="text-teal-400 text-sm">Aug 2025 - Present</p>
+                </div>
+                <h5 class="text-gray-300 mb-3">ProDataKey, Salt Lake City</h5>
+                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
+                  <li>Solo systems administrator managing all IT infrastructure and enterprise systems</li>
+                  <li>Salesforce administration including automation workflows and integrations</li>
+                  <li>Network infrastructure management (pfSense HA firewalls, Cisco switching, VLANs)</li>
+                  <li>Google Workspace administration for entire organization</li>
+                  <li>Enterprise security deployments (CrowdStrike EDR, CheckPoint email security)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Experience Item 2 -->
+            <div class="mb-10 relative">
+              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
+                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
+              </div>
+              <div class="text-left">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
                   <h4 class="text-lg font-semibold">Tier 3 IT Support Specialist</h4>
-                  <p class="text-teal-400 text-sm">Sept 2024 - Present</p>
+                  <p class="text-teal-400 text-sm">Sept 2024 - Aug 2025</p>
                 </div>
                 <h5 class="text-gray-300 mb-3">Deer Valley Resort, Park City</h5>
                 <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
@@ -475,7 +510,7 @@
               </div>
             </div>
             
-            <!-- Experience Item 2 -->
+            <!-- Experience Item 3 -->
             <div class="mb-10 relative">
               <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
                 <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
@@ -495,7 +530,7 @@
               </div>
             </div>
             
-            <!-- Experience Item 3 -->
+            <!-- Experience Item 4 -->
             <div class="relative">
               <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
                 <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
@@ -550,7 +585,7 @@
                   <p class="text-sm text-gray-400">February 2024</p>
                 </li>
                 <li>
-                  <p class="font-medium">Currently studying for Cisco CCNA</p>
+                  <p class="font-medium">Currently studying for Salesforce Administrator</p>
                   <p class="text-sm text-gray-400">Expected 2025</p>
                 </li>
               </ul>
@@ -565,7 +600,7 @@
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
         <div class="text-center md:text-left mb-6 md:mb-0">
           <h3 class="text-xl font-bold mb-2">Andrew Parker</h3>
-          <p class="text-gray-400">IT Specialist & Security Professional</p>
+          <p class="text-gray-400">Systems Administrator & Security Professional</p>
         </div>
         
         <div class="flex space-x-6">
@@ -599,6 +634,84 @@
           document.getElementById('mobile-menu').classList.add('hidden');
         });
       });
+      
+      // Particle Network Animation
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+      
+      const particles = [];
+      const particleCount = 100;
+      const maxDistance = 150;
+      
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.radius = 2;
+        }
+        
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          
+          if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        }
+        
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(20, 184, 166, 0.5)';
+          ctx.fill();
+        }
+      }
+      
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+      
+      function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < maxDistance) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(20, 184, 166, ${0.2 * (1 - distance / maxDistance)})`;
+              ctx.lineWidth = 1;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+      
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(particle => {
+          particle.update();
+          particle.draw();
+        });
+        
+        drawLines();
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
     </script>
   </body>
 </html>
