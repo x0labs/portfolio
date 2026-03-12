@@ -2,7 +2,7 @@
 
 My personal portfolio website showcasing professional background, skills, and projects.
 
-A simple, responsive website built with HTML, CSS, and JavaScript that highlights my experience as an IT Specialist and Security Professional.
+A simple, responsive website built with HTML, CSS, and JavaScript that highlights my experience as an Systems Administrator and Security Professional.
 
 Contact
 
