@@ -1,717 +1,737 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andrew Parker | Systems Administrator & Security Professional</title>
-    
-    <!-- Favicon implementation with multiple options following W3C standards -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico?v=1">
-    
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      .skill-tag {
-        transition: all 0.3s;
-      }
-      .skill-tag:hover {
-        transform: translateY(-3px);
-      }
-      .project-card {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      .project-card .project-content {
-        flex-grow: 1;
-      }
-      
-      /* Fixed button styling for guaranteed centering */
-      .button-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        gap: 16px;
-        padding-top: 1rem;
-      }
-      
-      @media (max-width: 640px) {
-        .button-container {
-          flex-direction: column;
-        }
-      }
-      
-      .centered-button {
-        display: inline-block;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: 500;
-        text-align: center;
-        transition: all 0.3s ease;
-      }
-      
-      .primary-button {
-        background-color: #14b8a6;
-        color: #111827;
-      }
-      
-      .primary-button:hover {
-        background-color: #2dd4bf;
-      }
-      
-      .secondary-button {
-        border: 1px solid #14b8a6;
-        color: #14b8a6;
-      }
-      
-      .secondary-button:hover {
-        background-color: #14b8a6;
-        color: #111827;
-      }
-      
-      /* Particle Network Background */
-      #particle-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: linear-gradient(to bottom, #0a0a0a, #1a1a2e);
-      }
-    </style>
-  </head>
-  <body class="bg-gray-900 text-white font-sans">
-    <!-- Particle Canvas Background -->
-    <canvas id="particle-canvas"></canvas>
-    <!-- NAVBAR -->
-    <header class="fixed w-full z-50 bg-gray-900 bg-opacity-95 shadow">
-      <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-        <h1 class="text-2xl font-bold">Andrew Parker</h1>
-        <ul class="hidden md:flex space-x-6 text-sm">
-          <li><a href="#about" class="hover:text-teal-400 transition">About</a></li>
-          <li><a href="#skills" class="hover:text-teal-400 transition">Skills</a></li>
-          <li><a href="#homelab" class="hover:text-teal-400 transition">Homelab</a></li>
-          <li><a href="#projects" class="hover:text-teal-400 transition">Projects</a></li>
-          <li><a href="#resume" class="hover:text-teal-400 transition">Resume</a></li>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Andrew Parker | Systems Administrator & Security Professional</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=1">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:        #0fd9c0;
+      --teal-dim:    #0aa88f;
+      --teal-glow:   rgba(15,217,192,0.18);
+      --teal-faint:  rgba(15,217,192,0.07);
+      --bg:          #060910;
+      --bg-1:        #0b0f18;
+      --bg-2:        #101828;
+      --bg-card:     #0d1320;
+      --bg-card-h:   #111b2e;
+      --border:      rgba(15,217,192,0.1);
+      --border-h:    rgba(15,217,192,0.28);
+      --text:        #e2eaf4;
+      --text-muted:  #6a7f99;
+      --text-dim:    #3d5068;
+      --mono:        'IBM Plex Mono', monospace;
+      --sans:        'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 3px; }
+
+    /* ── CANVAS ── */
+    #particle-canvas {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(6,9,16,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 28px;
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--teal);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    #menu-toggle { display: none; background: none; border: none; color: var(--text); cursor: pointer; font-size: 1.1rem; }
+    #mobile-menu { display: none; background: var(--bg-1); border-top: 1px solid var(--border); padding: 20px 28px; }
+    #mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    #mobile-menu a { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; }
+    #mobile-menu a:hover { color: var(--teal); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      #menu-toggle { display: block; }
+    }
+
+    /* ── LAYOUT ── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── LABEL ── */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* ── HERO ── */
+    #about {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 28px 60px;
+    }
+    .hero-inner { max-width: 720px; }
+    .hero-title {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      min-height: 1.2em;
+      margin-bottom: 20px;
+    }
+    .hero-cursor {
+      display: inline-block;
+      width: 2px; height: 0.85em;
+      background: var(--teal);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-sub {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+    .hero-sub span { color: var(--text-dim); margin: 0 8px; }
+    .btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 11px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.22s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary { background: var(--teal); color: var(--bg); }
+    .btn-primary:hover { background: #1af5da; transform: translateY(-2px); box-shadow: 0 6px 20px var(--teal-glow); }
+    .btn-outline { border: 1px solid var(--border-h); color: var(--teal); }
+    .btn-outline:hover { background: var(--teal-faint); border-color: var(--teal); transform: translateY(-2px); }
+
+    /* ── SECTION HEADINGS ── */
+    .section-title {
+      font-weight: 700;
+      font-size: 1.9rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .card:hover {
+      border-color: var(--border-h);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px var(--border-h);
+      transform: translateY(-3px);
+    }
+
+    /* ── SKILL TAGS ── */
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      background: var(--teal-faint);
+      border: 1px solid var(--border);
+      color: #7fb4c8;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .tag:hover {
+      background: rgba(15,217,192,0.12);
+      border-color: rgba(15,217,192,0.35);
+      color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    /* ── CARD ICON HEADER ── */
+    .card-head {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+    .card-head i { color: var(--teal); font-size: 0.9rem; }
+
+    /* ── CHECK LIST ── */
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .check-list li { display: flex; gap: 10px; color: var(--text-muted); font-size: 0.88rem; }
+    .check-list li i { color: var(--teal); font-size: 0.75rem; flex-shrink: 0; margin-top: 4px; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--teal-dim), transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 40px; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -34px; top: 4px;
+      width: 12px; height: 12px;
+      background: var(--teal);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--teal-glow);
+    }
+    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+    .tl-title { font-weight: 600; font-size: 0.95rem; }
+    .tl-date { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--teal); }
+    .tl-company { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; font-family: var(--mono); }
+    .tl-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .tl-list li { font-size: 0.82rem; color: var(--text-dim); padding-left: 12px; position: relative; }
+    .tl-list li::before { content: '—'; position: absolute; left: 0; color: var(--teal-dim); }
+
+    /* ── CERTS ── */
+    .cert-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .cert-item:hover {
+      border-color: var(--border-h);
+      box-shadow: 0 0 16px var(--teal-glow);
+    }
+    .cert-name { font-weight: 600; font-size: 0.88rem; margin-bottom: 3px; }
+    .cert-meta { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--text-muted); }
+
+    /* ── PROJECT CARDS ── */
+    .proj-card { display: flex; flex-direction: column; }
+    .proj-card .proj-body { flex-grow: 1; }
+    .proj-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
+    .proj-desc { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 14px; }
+    .proj-footer { display: flex; justify-content: flex-end; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border); }
+    .proj-link { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--teal); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+    .proj-link:hover { gap: 10px; }
+
+    /* ── ALT SECTION BG ── */
+    .bg-alt { background: rgba(11,15,24,0.6); }
+
+    /* ── SCROLL FADE ── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-1);
+      border-top: 1px solid var(--border);
+      padding: 40px 28px;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-name { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+    .footer-sub { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-muted); }
+    .footer-icons { display: flex; gap: 20px; }
+    .footer-icons a { color: var(--text-muted); font-size: 1.2rem; transition: color 0.2s, transform 0.2s; }
+    .footer-icons a:hover { color: var(--teal); transform: translateY(-2px); }
+    .footer-copy { text-align: center; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-dim); margin-top: 28px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+    /* ── GRID HELPERS ── */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<!-- NAV -->
+<header>
+  <nav>
+    <div class="nav-logo"><span>//</span> andrew parker</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#homelab">Homelab</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+    </ul>
+    <button id="menu-toggle"><i class="fas fa-bars"></i></button>
+  </nav>
+  <div id="mobile-menu">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#homelab">Homelab</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="about">
+  <div class="hero-inner">
+    <span class="eyebrow">Salt Lake City, UT &nbsp;·&nbsp; Systems Administrator</span>
+    <h1 class="hero-title">
+      <span id="typed-text"></span><span class="hero-cursor"></span>
+    </h1>
+    <p class="hero-sub">
+      Cybersecurity <span>·</span> Infrastructure <span>·</span> Automation <span>·</span> Builder
+    </p>
+    <div class="btn-row">
+      <a href="mailto:acp6454@gmail.com" class="btn btn-primary">Get In Touch</a>
+      <a href="#homelab" class="btn btn-outline">View My Work</a>
+      <a href="https://linkedin.com/in/andrew-parker-it" class="btn btn-outline"><i class="fab fa-linkedin"></i>LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-24 bg-alt">
+  <div class="container">
+    <span class="eyebrow" style="text-align:center;display:block;">Capabilities</span>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="grid-2">
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-server"></i> Enterprise IT</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;">
+          <span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">Windows Server</span><span class="tag">Linux</span><span class="tag">Patch Management</span><span class="tag">Google Workspace</span><span class="tag">Salesforce Administration</span>
+        </div>
+      </div>
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-network-wired"></i> Networking</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;">
+          <span class="tag">pfSense HA</span><span class="tag">DHCP / Kea HA</span><span class="tag">DNS</span><span class="tag">VLANs</span><span class="tag">Cisco Switching</span><span class="tag">Aruba Wireless</span><span class="tag">Cloudflare Zero Trust</span>
+        </div>
+      </div>
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-shield-alt"></i> Security</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;">
+          <span class="tag">CrowdStrike EDR</span><span class="tag">CheckPoint Harmony</span><span class="tag">1Password Enterprise</span><span class="tag">JumpCloud MDM</span><span class="tag">SIEM</span><span class="tag">IPS/IDS</span><span class="tag">Security+</span>
+        </div>
+      </div>
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-code"></i> Development &amp; Automation</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;">
+          <span class="tag">PowerShell</span><span class="tag">Bash</span><span class="tag">Python</span><span class="tag">HTML/CSS</span><span class="tag">Docker</span><span class="tag">Salesforce Flow</span><span class="tag">Data Loader</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOMELAB -->
+<section id="homelab" class="py-24">
+  <div class="container">
+    <span class="eyebrow" style="text-align:center;display:block;">Personal Infrastructure</span>
+    <h2 class="section-title">My Homelab</h2>
+    <p style="text-align:center;color:var(--text-muted);max-width:620px;margin:0 auto 48px;font-size:0.88rem;">
+      Where theory meets practice — my personal IT playground for learning, testing, and mastering enterprise technologies before shipping them to production.
+    </p>
+    <div class="grid-2" style="margin-bottom:48px;">
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-server"></i> Infrastructure Overview</div>
+        <ul class="check-list">
+          <li><i class="fas fa-check-circle"></i><span>Dual AMD EPYC R6415 servers running Proxmox for virtualization</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Multiple virtualized environments (Windows Server, Linux LXC) for testing</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Synology NAS + QNAP with Synology Active Backup for Business</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Managed network with full VLAN segmentation and pfSense firewall</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Cloudflare Zero Trust tunnels — secure remote access, no inbound ports</span></li>
         </ul>
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button id="menu-toggle" class="text-white focus:outline-none">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-        </div>
-      </nav>
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-6 py-4">
-        <ul class="space-y-4">
-          <li><a href="#about" class="block hover:text-teal-400">About</a></li>
-          <li><a href="#skills" class="block hover:text-teal-400">Skills</a></li>
-          <li><a href="#homelab" class="block hover:text-teal-400">Homelab</a></li>
-          <li><a href="#projects" class="block hover:text-teal-400">Projects</a></li>
-          <li><a href="#resume" class="block hover:text-teal-400">Resume</a></li>
+      </div>
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-shield-alt"></i> Security &amp; Monitoring</div>
+        <ul class="check-list">
+          <li><i class="fas fa-check-circle"></i><span>Self-hosted SIEM with custom dashboards for log analysis and threat hunting</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Network IDS/IPS for traffic inspection and threat detection</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Ollama running local LLMs for privacy-first AI experimentation</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Custom security hardening scripts applied to all deployed systems</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Meshtastic mesh radio nodes for off-grid network experiments</span></li>
         </ul>
       </div>
-    </header>
+    </div>
+    <h3 style="font-weight:600;font-size:1.15rem;text-align:center;margin-bottom:24px;">Featured Homelab Projects</h3>
+    <div class="grid-3">
+      <div class="card p-6 fade-up">
+        <h5 style="font-weight:600;font-size:0.9rem;margin-bottom:8px;">Self-Hosted SOC</h5>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">Comprehensive security operations center using open-source tools for hands-on detection and response practice.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">SIEM</span><span class="tag">ELK Stack</span><span class="tag">Wazuh</span></div>
+      </div>
+      <div class="card p-6 fade-up">
+        <h5 style="font-weight:600;font-size:0.9rem;margin-bottom:8px;">VDI Lab Environment</h5>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">Virtual desktop infrastructure for testing enterprise deployment scenarios and security policies in isolation.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">Proxmox VDI</span><span class="tag">Group Policy</span><span class="tag">Active Directory</span></div>
+      </div>
+      <div class="card p-6 fade-up">
+        <h5 style="font-weight:600;font-size:0.9rem;margin-bottom:8px;">Network Segmentation</h5>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">Enterprise-grade network design with full VLAN segmentation, proper ACLs, and Zero Trust tunneling.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">VLANs</span><span class="tag">pfSense</span><span class="tag">Cisco Switching</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <section class="h-screen flex flex-col justify-center items-center text-center px-4" id="about">
-      <div class="space-y-6 w-full max-w-2xl mx-auto">
-        <h2 class="text-4xl md:text-6xl font-extrabold mb-4">
-          <span class="inline-block animate-pulse">Hey, I'm Andrew Parker</span>
-        </h2>
-        <p class="text-lg md:text-xl text-gray-300">
-          Systems Administrator | Cybersecurity Professional | Builder of things in code, cables, and cloud
-        </p>
-        
-        <!-- Fixed button container with proper styling -->
-        <div class="button-container">
-          <a href="mailto:acp6454@gmail.com" class="centered-button primary-button">Get In Touch</a>
-          <a href="#homelab" class="centered-button secondary-button">View My Work</a>
-          <a href="https://linkedin.com/in/andrew-parker-it" class="centered-button secondary-button">
-            <i class="fab fa-linkedin mr-2"></i>LinkedIn
-          </a>
+<!-- PROJECTS -->
+<section id="projects" class="py-24 bg-alt">
+  <div class="container">
+    <span class="eyebrow" style="text-align:center;display:block;">Work</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="grid-3">
+      <div class="card p-6 proj-card fade-up">
+        <div class="proj-body">
+          <p class="proj-title">Enterprise Backup System</p>
+          <p class="proj-desc">Automated backup solution for VMs and critical data with offsite replication and alerting.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">Bash</span><span class="tag">Proxmox</span><span class="tag">rsync</span></div>
         </div>
+        <div class="proj-footer"><a href="#" class="proj-link">Read more <i class="fas fa-arrow-right"></i></a></div>
       </div>
-    </section>
+      <div class="card p-6 proj-card fade-up">
+        <div class="proj-body">
+          <p class="proj-title">Minecraft Server Infrastructure</p>
+          <p class="proj-desc">Paper server in Proxmox LXC with EssentialsX, performance tuning, and Cloudflare tunnel exposure.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">Proxmox LXC</span><span class="tag">Linux</span><span class="tag">Cloudflare</span></div>
+        </div>
+        <div class="proj-footer"><a href="#" class="proj-link">Read more <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="card p-6 proj-card fade-up">
+        <div class="proj-body">
+          <p class="proj-title">Zero Trust Implementation</p>
+          <p class="proj-desc">Cloudflare Zero Trust securing internal services — no inbound firewall rules, no traditional VPN.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">Cloudflare</span><span class="tag">Zero Trust</span><span class="tag">Tunnels</span></div>
+        </div>
+        <div class="proj-footer"><a href="#" class="proj-link">Read more <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="card p-6 proj-card fade-up">
+        <div class="proj-body">
+          <p class="proj-title">Salesforce MQL/SQL Automation</p>
+          <p class="proj-desc">End-to-end lead flows — MQL cadences, SQL 30-day task chains, RMA sync, Zoom Phone integration.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">Salesforce Flow</span><span class="tag">Data Loader</span><span class="tag">Pardot</span></div>
+        </div>
+        <div class="proj-footer"><a href="#" class="proj-link">Read more <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="card p-6 proj-card fade-up">
+        <div class="proj-body">
+          <p class="proj-title">Custom SIEM Dashboard</p>
+          <p class="proj-desc">Specialized dashboards for security monitoring, visualizing network and system events across the environment.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">ELK Stack</span><span class="tag">Wazuh</span><span class="tag">Dashboards</span></div>
+        </div>
+        <div class="proj-footer"><a href="#" class="proj-link">Read more <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="card p-6 proj-card fade-up">
+        <div class="proj-body">
+          <p class="proj-title">Office Expansion &amp; VLAN Buildout</p>
+          <p class="proj-desc">Full IDF buildout, structured cabling, CBS350 deployment, and VLAN segmentation across pfSense HA and Cisco 9200 core.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="tag">Cisco</span><span class="tag">pfSense HA</span><span class="tag">VLANs</span></div>
+        </div>
+        <div class="proj-footer"><a href="#" class="proj-link">Read more <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="py-20 px-6 bg-gray-800">
-      <div class="max-w-5xl mx-auto">
-        <h3 class="text-3xl font-bold mb-10 text-center">Technical Skills</h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Core IT Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-server mr-3 text-teal-400"></i>
-              Enterprise IT
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Active Directory</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Group Policy</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Windows Server</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Linux</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Patch Management</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Google Workspace</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Salesforce Administration</span>
-            </div>
-          </div>
-          
-          <!-- Networking Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-network-wired mr-3 text-teal-400"></i>
-              Networking
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">pfSense</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DHCP</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">DNS</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">VLANs</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cisco Switching</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Aruba Wireless</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Cloudflare Zero Trust</span>
-            </div>
-          </div>
-          
-          <!-- Security Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-shield-alt mr-3 text-teal-400"></i>
-              Security
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">CrowdStrike EDR</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">CheckPoint Email Security</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">1Password Enterprise</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">SIEM</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">IPS/IDS</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Security+</span>
-            </div>
-          </div>
-          
-          <!-- Development Skills -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-code mr-3 text-teal-400"></i>
-              Development
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">PowerShell</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Bash</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Python</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">HTML/CSS</span>
-              <span class="skill-tag bg-gray-600 px-3 py-1 rounded-lg text-sm">Docker</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- RESUME -->
+<section id="resume" class="py-24">
+  <div class="container" style="max-width:860px;">
+    <span class="eyebrow" style="text-align:center;display:block;">Background</span>
+    <h2 class="section-title">Resume</h2>
+    <div style="text-align:center;margin-bottom:56px;">
+      <a href="https://raw.githubusercontent.com/x0labs/portfolio/main/resume.pdf" download="Andrew_Parker_Resume.pdf" class="btn btn-outline">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+    </div>
 
-    <!-- HOMELAB -->
-    <section id="homelab" class="py-20 px-6">
-      <div class="max-w-6xl mx-auto">
-        <h3 class="text-3xl font-bold mb-4 text-center">My Homelab</h3>
-        <p class="text-gray-300 text-center max-w-3xl mx-auto mb-12">
-          Where theory meets practice: My personal IT playground for learning, testing, and mastering enterprise technologies
-        </p>
-        
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-          <!-- Homelab Overview -->
-          <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-server mr-3 text-teal-400"></i>
-              Infrastructure Overview
-            </h4>
-            <ul class="space-y-3 text-gray-300">
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Proxmox hypervisor running on dedicated server hardware built for virtualization</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Multiple virtualized environments (Windows Server, Linux) for testing and learning</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Docker environment for containerized applications and services</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Managed network with VLANs for segregation and security</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Redundant backups using automated scripts and offsite storage</span>
-              </li>
-            </ul>
-          </div>
-          
-          <!-- Security Setup -->
-          <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-            <h4 class="text-xl font-semibold mb-4 flex items-center">
-              <i class="fas fa-shield-alt mr-3 text-teal-400"></i>
-              Security & Monitoring
-            </h4>
-            <ul class="space-y-3 text-gray-300">
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Self-hosted SIEM with custom dashboards for log analysis and security monitoring</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Network IDS/IPS for traffic inspection and threat detection</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Cloudflare Zero Trust implementation for secure remote access</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Custom security hardening scripts for all deployed systems</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-teal-400 mt-1 mr-2"></i>
-                <span>Automated vulnerability scanning and patch management</span>
-              </li>
-            </ul>
-          </div>
+    <!-- Timeline -->
+    <div class="timeline" style="max-width:680px;margin:0 auto 64px;">
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-title">Systems Administrator</span>
+          <span class="tl-date">Aug 2025 – Present</span>
         </div>
-        
-        <!-- Featured Homelab Projects -->
-        <div class="mt-10">
-          <h4 class="text-2xl font-semibold mb-6 text-center">Featured Homelab Projects</h4>
-          <div class="grid md:grid-cols-3 gap-6">
-            <!-- Project 1 -->
-            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-              <div class="p-6">
-                <h5 class="text-xl font-semibold mb-2">Self-Hosted SOC</h5>
-                <p class="text-gray-300 mb-4">A comprehensive security operations center built with open-source tools for hands-on detection and response practice.</p>
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">SIEM</span>
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">ELK Stack</span>
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">Wazuh</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Project 2 -->
-            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-              <div class="p-6">
-                <h5 class="text-xl font-semibold mb-2">VDI Lab Environment</h5>
-                <p class="text-gray-300 mb-4">Virtual desktop infrastructure setup for testing enterprise deployment scenarios and security policies.</p>
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">Proxmox VDI</span>
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">Group Policy</span>
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">Active Directory</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Project 3 -->
-            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-              <div class="p-6">
-                <h5 class="text-xl font-semibold mb-2">Network Segmentation</h5>
-                <p class="text-gray-300 mb-4">Implemented enterprise-grade network design with VLANs, proper ACLs, and traffic monitoring.</p>
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">VLANs</span>
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">pfSense</span>
-                  <span class="bg-gray-700 px-2 py-1 rounded text-xs">Cisco Switching</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="tl-company">ProdataKey &nbsp;·&nbsp; Salt Lake City, UT</div>
+        <ul class="tl-list">
+          <li>Sole owner of all IT infrastructure, systems, and vendor relationships across the organization</li>
+          <li>Designed and maintained CRM automation pipelines supporting the full sales lifecycle</li>
+          <li>Owned network architecture including firewalls, switching, wireless, and segmentation</li>
+          <li>Administered identity, device management, and productivity platforms company-wide</li>
+          <li>Deployed and managed the organization's endpoint security and email security posture</li>
+          <li>Led a full office expansion from planning through cutover — cabling, switching, APs, and access control</li>
+        </ul>
       </div>
-    </section>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-title">Tier 3 IT Support Specialist</span>
+          <span class="tl-date">Sept 2024 – Aug 2025</span>
+        </div>
+        <div class="tl-company">Deer Valley Resort &nbsp;·&nbsp; Park City, UT</div>
+        <ul class="tl-list">
+          <li>Tier 3 IT support for large enterprise ski resort environment</li>
+          <li>VMware vSphere management, server patching, and system documentation</li>
+          <li>Server and network maintenance: DHCP, DNS, Cisco switch configuration</li>
+          <li>GPO management and domain access policy enforcement</li>
+        </ul>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-title">Help Desk / Triage</span>
+          <span class="tl-date">Mar 2024 – Sept 2024</span>
+        </div>
+        <div class="tl-company">Unisys &nbsp;·&nbsp; Salt Lake City, UT</div>
+        <ul class="tl-list">
+          <li>Tier 2 help desk supporting Unisys and AAA accounts</li>
+          <li>Troubleshooting software, network, and hardware issues</li>
+          <li>Active Directory account and device management</li>
+          <li>Windows and Microsoft 365 support</li>
+        </ul>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-title">Owner / IT Consultant</span>
+          <span class="tl-date">Jan 2022 – Present</span>
+        </div>
+        <div class="tl-company">TechnoJargon LLC &nbsp;·&nbsp; Salt Lake City, UT</div>
+        <ul class="tl-list">
+          <li>IT consulting and technical support for small businesses in Salt Lake area</li>
+          <li>Web development, Office 365 and Google Workspace support</li>
+          <li>Networking: DHCP, DNS, structured cabling</li>
+        </ul>
+      </div>
+    </div>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="py-20 bg-gray-800 px-6">
-      <div class="max-w-6xl mx-auto">
-        <h3 class="text-3xl font-bold mb-10 text-center">Projects</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Enterprise Backup System</h4>
-              <p class="text-gray-300 mb-4">Designed and implemented an automated backup solution for virtual machines and critical data with offsite replication.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Bash</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Proxmox</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">rsync</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
+    <!-- Education & Certs -->
+    <span class="eyebrow" style="text-align:center;display:block;">Credentials</span>
+    <h3 style="font-weight:600;font-size:1.3rem;text-align:center;letter-spacing:-0.01em;margin-bottom:32px;">Education &amp; Certifications</h3>
+    <div class="grid-2">
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-graduation-cap"></i> Education</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <p style="font-weight:600;font-size:0.88rem;margin-bottom:3px;">Bachelor of Science in Biology</p>
+            <p class="cert-meta">University of Utah &nbsp;·&nbsp; December 2023</p>
           </div>
-          
-          <!-- Project 2 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Minecraft Server Infrastructure</h4>
-              <p class="text-gray-300 mb-4">Built and maintained a modded Minecraft server with advanced performance tuning, containerization, and automated backups.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Docker</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Java</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Linux</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-          
-          <!-- Project 3 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Zero Trust Network Implementation</h4>
-              <p class="text-gray-300 mb-4">Implemented Cloudflare Zero Trust to secure remote access to internal services without traditional VPN requirements.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Cloudflare</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Zero Trust</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Tunnels</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-          
-          <!-- Project 4 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Automated Patch Management</h4>
-              <p class="text-gray-300 mb-4">Created scripts to automate Windows and Linux updates across multiple systems with reporting and rollback capabilities.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">PowerShell</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Bash</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Automation</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-          
-          <!-- Project 5 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Custom SIEM Dashboard</h4>
-              <p class="text-gray-300 mb-4">Developed specialized dashboards for security monitoring using open-source tools to visualize network and system events.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">ELK Stack</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Wazuh</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Dashboards</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-          
-          <!-- Project 6 -->
-          <div class="bg-gray-700 p-6 rounded-xl shadow-lg project-card hover:scale-105 transform transition">
-            <div class="project-content">
-              <h4 class="text-xl font-semibold mb-3">Docker Container Environment</h4>
-              <p class="text-gray-300 mb-4">Established a comprehensive Docker environment with monitoring, automated deployments, and proper networking.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Docker</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Docker Compose</span>
-                <span class="bg-gray-600 px-2 py-1 rounded text-xs">Portainer</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a href="#" class="text-teal-400 hover:text-teal-300 text-sm flex items-center">
-                <span>Read more</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
+          <div>
+            <p style="font-weight:600;font-size:0.88rem;margin-bottom:3px;">Business Administration Minor</p>
+            <p class="cert-meta">David Eccles School of Business &nbsp;·&nbsp; December 2023</p>
           </div>
         </div>
       </div>
-    </section>
+      <div class="card p-6 fade-up">
+        <div class="card-head"><i class="fas fa-certificate"></i> Certifications</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="cert-item">
+            <p class="cert-name">Salesforce Certified Administrator</p>
+            <p class="cert-meta">Salesforce &nbsp;·&nbsp; April 2026</p>
+          </div>
+          <div class="cert-item">
+            <p class="cert-name">CompTIA Security+ ce</p>
+            <p class="cert-meta">CompTIA &nbsp;·&nbsp; February 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- RESUME -->
-    <section id="resume" class="py-20 px-6">
-      <div class="text-center max-w-4xl mx-auto">
-        <h3 class="text-3xl font-bold mb-6">Resume</h3>
-        <p class="text-gray-300 mb-6">Download my resume or view my professional experience below.</p>
-        
-        <!-- Fixed resume download link using correct GitHub URL -->
-        <a href="https://raw.githubusercontent.com/x0labs/portfolio/main/resume.pdf" download="Andrew_Parker_Resume.pdf" class="inline-block px-6 py-3 border border-teal-400 text-teal-400 rounded-lg font-medium hover:bg-teal-400 hover:text-gray-900 transition mb-12">
-          Download Resume
-        </a>
-        
-        <!-- Experience Timeline -->
-        <div class="max-w-3xl mx-auto mt-12">
-          <div class="relative border-l-2 border-gray-700 pl-8 py-4 ml-6">
-            <!-- Experience Item 1 -->
-            <div class="mb-10 relative">
-              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
-                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
-              </div>
-              <div class="text-left">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                  <h4 class="text-lg font-semibold">Systems Administrator</h4>
-                  <p class="text-teal-400 text-sm">Aug 2025 - Present</p>
-                </div>
-                <h5 class="text-gray-300 mb-3">ProDataKey, Salt Lake City</h5>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
-                  <li>Solo systems administrator managing all IT infrastructure and enterprise systems</li>
-                  <li>Salesforce administration including automation workflows and integrations</li>
-                  <li>Network infrastructure management (pfSense HA firewalls, Cisco switching, VLANs)</li>
-                  <li>Google Workspace administration for entire organization</li>
-                  <li>Enterprise security deployments (CrowdStrike EDR, CheckPoint email security)</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Experience Item 2 -->
-            <div class="mb-10 relative">
-              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
-                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
-              </div>
-              <div class="text-left">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                  <h4 class="text-lg font-semibold">Tier 3 IT Support Specialist</h4>
-                  <p class="text-teal-400 text-sm">Sept 2024 - Aug 2025</p>
-                </div>
-                <h5 class="text-gray-300 mb-3">Deer Valley Resort, Park City</h5>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
-                  <li>Tier 3 IT support for enterprise environment at a large ski resort</li>
-                  <li>Supported enterprise infrastructure through VMware vSphere management, server patching, and system documentation</li>
-                  <li>Server and network maintenance including DHCP, DNS, Cisco switch config</li>
-                  <li>Advanced troubleshooting and incident triage</li>
-                  <li>GPO management, domain access policy enforcement</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Experience Item 3 -->
-            <div class="mb-10 relative">
-              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
-                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
-              </div>
-              <div class="text-left">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                  <h4 class="text-lg font-semibold">Help Desk / Triage</h4>
-                  <p class="text-teal-400 text-sm">Mar 2024 - Sept 2024</p>
-                </div>
-                <h5 class="text-gray-300 mb-3">Unisys, Salt Lake City</h5>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
-                  <li>Tier 2 help desk for Unisys and AAA account</li>
-                  <li>Troubleshooting software, network, hardware</li>
-                  <li>Active directory account and device management</li>
-                  <li>Windows and O365 support</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Experience Item 4 -->
-            <div class="relative">
-              <div class="absolute -left-12 mt-1 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center">
-                <div class="h-3 w-3 bg-gray-900 rounded-full"></div>
-              </div>
-              <div class="text-left">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                  <h4 class="text-lg font-semibold">Owner</h4>
-                  <p class="text-teal-400 text-sm">Jan 2022 - Present</p>
-                </div>
-                <h5 class="text-gray-300 mb-3">TechnoJargon LLC, Salt Lake City</h5>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc pl-4">
-                  <li>IT consultant for small business in Salt Lake area</li>
-                  <li>Technical Support for multiple small businesses</li>
-                  <li>Web development - HTML CSS</li>
-                  <li>Application Support - Office 365, Google Workspace</li>
-                  <li>Networking - DHCP, DNS, structured cabling</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Education & Certifications -->
-        <div class="max-w-3xl mx-auto mt-16">
-          <h4 class="text-2xl font-semibold mb-8 text-center">Education & Certifications</h4>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-              <h5 class="text-xl font-semibold mb-3 flex items-center">
-                <i class="fas fa-graduation-cap mr-3 text-teal-400"></i>
-                Education
-              </h5>
-              <ul class="space-y-4 text-gray-300">
-                <li>
-                  <p class="font-medium">Bachelor of Science in Biology</p>
-                  <p class="text-sm text-gray-400">University of Utah, December 2023</p>
-                </li>
-                <li>
-                  <p class="font-medium">Business Administration Minor</p>
-                  <p class="text-sm text-gray-400">David Eccles School of Business, University of Utah, December 2023</p>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
-              <h5 class="text-xl font-semibold mb-3 flex items-center">
-                <i class="fas fa-certificate mr-3 text-teal-400"></i>
-                Certifications
-              </h5>
-              <ul class="space-y-4 text-gray-300">
-                <li>
-                  <p class="font-medium">CompTIA Security+ ce</p>
-                  <p class="text-sm text-gray-400">February 2024</p>
-                </li>
-                <li>
-                  <p class="font-medium">Currently studying for Salesforce Administrator</p>
-                  <p class="text-sm text-gray-400">Expected 2025</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 py-8 px-6 border-t border-gray-800">
-      <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div class="text-center md:text-left mb-6 md:mb-0">
-          <h3 class="text-xl font-bold mb-2">Andrew Parker</h3>
-          <p class="text-gray-400">Systems Administrator & Security Professional</p>
-        </div>
-        
-        <div class="flex space-x-6">
-          <a href="https://github.com/x0labs" class="text-gray-400 hover:text-teal-400 transition">
-            <i class="fab fa-github text-2xl"></i>
-          </a>
-          <a href="https://linkedin.com/in/andrew-parker-it" class="text-gray-400 hover:text-teal-400 transition">
-            <i class="fab fa-linkedin text-2xl"></i>
-          </a>
-          <a href="mailto:acp6454@gmail.com" class="text-gray-400 hover:text-teal-400 transition">
-            <i class="fas fa-envelope text-2xl"></i>
-          </a>
-        </div>
-      </div>
-      
-      <div class="text-center mt-8 text-sm text-gray-500">
-        <p>&copy; 2025 Andrew Parker. All rights reserved.</p>
-      </div>
-    </footer>
-    
-    <!-- Mobile menu toggle script -->
-    <script>
-      document.getElementById('menu-toggle').addEventListener('click', function() {
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenu.classList.toggle('hidden');
-      });
-      
-      // Close mobile menu when clicking a link
-      document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', function() {
-          document.getElementById('mobile-menu').classList.add('hidden');
-        });
-      });
-      
-      // Particle Network Animation
-      const canvas = document.getElementById('particle-canvas');
-      const ctx = canvas.getContext('2d');
-      
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      });
-      
-      const particles = [];
-      const particleCount = 100;
-      const maxDistance = 150;
-      
-      class Particle {
-        constructor() {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
-          this.vx = (Math.random() - 0.5) * 0.5;
-          this.vy = (Math.random() - 0.5) * 0.5;
-          this.radius = 2;
-        }
-        
-        update() {
-          this.x += this.vx;
-          this.y += this.vy;
-          
-          if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-          if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        }
-        
-        draw() {
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Andrew Parker</p>
+      <p class="footer-sub">Systems Administrator &amp; Security Professional</p>
+    </div>
+    <div class="footer-icons">
+      <a href="https://github.com/x0labs" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/andrew-parker-it" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:acp6454@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Andrew Parker &nbsp;·&nbsp; All rights reserved.</p>
+</footer>
+
+<script>
+  // Mobile menu
+  document.getElementById('menu-toggle').addEventListener('click', () => {
+    const m = document.getElementById('mobile-menu');
+    m.style.display = m.style.display === 'block' ? 'none' : 'block';
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => { document.getElementById('mobile-menu').style.display = 'none'; });
+  });
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { threshold: 0.45 });
+  sections.forEach(s => io.observe(s));
+
+  // Typewriter
+  const phrases = [
+    "Hey, I'm Andrew Parker",
+    "Systems Administrator",
+    "Security Professional",
+    "Infrastructure Builder",
+    "Automation Enthusiast"
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typed-text');
+  function type() {
+    const phrase = phrases[pi];
+    el.textContent = deleting ? phrase.slice(0, --ci) : phrase.slice(0, ++ci);
+    let delay = deleting ? 40 : 68;
+    if (!deleting && ci === phrase.length) {
+      if (pi === 0) { setTimeout(type, 2800); return; }
+      deleting = true; delay = 1500;
+    } else if (deleting && ci === 0) {
+      deleting = false;
+      pi = (pi + 1) % phrases.length;
+      delay = 300;
+    }
+    setTimeout(type, delay);
+  }
+  type();
+
+  // Scroll fade-in
+  const fades = document.querySelectorAll('.fade-up');
+  const fadeIO = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
+        fadeIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  fades.forEach(f => fadeIO.observe(f));
+
+  // Particle canvas
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Dot {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.38;
+      this.vy = (Math.random() - 0.5) * 0.38;
+      this.r = Math.random() * 1.2 + 0.6;
+    }
+    step() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(15,217,192,0.45)';
+      ctx.fill();
+    }
+  }
+
+  const dots = Array.from({ length: 85 }, () => new Dot());
+  const MAX = 145;
+
+  function frame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dots.forEach(d => { d.step(); d.draw(); });
+    for (let i = 0; i < dots.length; i++) {
+      for (let j = i + 1; j < dots.length; j++) {
+        const dx = dots[i].x - dots[j].x;
+        const dy = dots[i].y - dots[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < MAX) {
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(20, 184, 166, 0.5)';
-          ctx.fill();
+          ctx.strokeStyle = `rgba(15,217,192,${0.18 * (1 - dist/MAX)})`;
+          ctx.lineWidth = 0.7;
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.stroke();
         }
       }
-      
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-      
-      function drawLines() {
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < maxDistance) {
-              ctx.beginPath();
-              ctx.strokeStyle = `rgba(20, 184, 166, ${0.2 * (1 - distance / maxDistance)})`;
-              ctx.lineWidth = 1;
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
-        }
-      }
-      
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        particles.forEach(particle => {
-          particle.update();
-          particle.draw();
-        });
-        
-        drawLines();
-        requestAnimationFrame(animate);
-      }
-      
-      animate();
-    </script>
-  </body>
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+</script>
+</body>
 </html>
